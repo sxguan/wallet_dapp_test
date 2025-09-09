@@ -4,7 +4,8 @@
 
 ## 🚨 快速修复构建错误
 
-如果遇到构建错误（如 "Failed to resolve @remix-run/dev"），请按以下步骤操作：
+### 错误 1: "Failed to resolve @remix-run/dev"
+如果遇到框架检测错误：
 
 1. **进入 Vercel Dashboard**
 2. **选择项目 → Settings → General**
@@ -14,7 +15,18 @@
    - **Node.js Version**: `18.x`
 4. **保存设置并重新部署**
 
-这将解决框架检测错误问题。
+### 错误 2: "react-scripts: command not found"
+如果遇到 react-scripts 错误：
+
+1. **确保正确设置**：
+   - **Root Directory**: `frontend`
+   - **Node.js Version**: `18.x` (项目包含 `.nvmrc` 文件)
+2. **在 Vercel Dashboard 中清除缓存**：
+   - 进入 Deployments
+   - 点击 "Redeploy" 时选择 "Clear build cache and redeploy"
+3. **检查环境变量设置**
+
+这些步骤将解决常见的构建问题。
 
 ## 项目概述
 
