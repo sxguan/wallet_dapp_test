@@ -1,1 +1,10 @@
-{}
+{
+  "name": "chainlink-dapp-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm start",
+    "postinstall": "cd frontend && npm install"
+  }
+}

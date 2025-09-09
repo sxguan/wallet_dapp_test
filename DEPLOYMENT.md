@@ -15,18 +15,23 @@
    - **Node.js Version**: `18.x`
 4. **保存设置并重新部署**
 
-### 错误 2: "react-scripts: command not found"
-如果遇到 react-scripts 错误：
+### 错误 2: "react-scripts: command not found" 或 "Missing script: build"
+如果遇到构建脚本错误：
 
-1. **确保正确设置**：
-   - **Root Directory**: `frontend`
-   - **Node.js Version**: `18.x` (项目包含 `.nvmrc` 文件)
-2. **在 Vercel Dashboard 中清除缓存**：
-   - 进入 Deployments
-   - 点击 "Redeploy" 时选择 "Clear build cache and redeploy"
-3. **检查环境变量设置**
+**解决方案**：项目现在配置为从根目录构建，无需设置 Root Directory。
 
-这些步骤将解决常见的构建问题。
+1. **Vercel Dashboard 设置**：
+   - **Root Directory**: 保持空白或设置为 `./`
+   - **Framework Preset**: `Other`
+   - **Node.js Version**: `18.x`
+
+2. **项目现在包含根目录配置**：
+   - `package.json` - 包含构建脚本
+   - `vercel.json` - 自定义构建配置
+
+3. **如果仍有问题，清除缓存重新部署**
+
+这种配置避免了目录结构问题。
 
 ## 项目概述
 
@@ -103,14 +108,14 @@ REACT_APP_CHAIN_ID=11155111
 
    在项目配置页面：
    
-   **Framework Preset**: `Create React App`
+   **Framework Preset**: `Other` (重要：不要选择 Create React App)
    
-   **Root Directory**: `frontend` (重要：选择 frontend 目录作为根目录)
+   **Root Directory**: 保持空白 (使用根目录)
    
-   **Build and Output Settings**: 保持默认设置
-   - Build Command: `npm run build`
-   - Output Directory: `build`
-   - Install Command: `npm install`
+   **Build and Output Settings**: 使用自定义配置
+   - Build Command: 由 `vercel.json` 自动配置
+   - Output Directory: 由 `vercel.json` 自动配置
+   - Install Command: 由 `vercel.json` 自动配置
 
 4. **环境变量配置**
 

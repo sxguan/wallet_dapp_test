@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "chainlink-price-feed-dapp",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "echo 'skipping root install'",
+  "framework": null
+}
