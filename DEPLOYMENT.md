@@ -2,6 +2,20 @@
 
 这个指南将详细说明如何将您的 Chainlink 价格数据 DApp 部署到 Vercel。
 
+## 🚨 快速修复构建错误
+
+如果遇到构建错误（如 "Failed to resolve @remix-run/dev"），请按以下步骤操作：
+
+1. **进入 Vercel Dashboard**
+2. **选择项目 → Settings → General**
+3. **设置以下关键配置**：
+   - **Root Directory**: `frontend`
+   - **Framework Preset**: `Create React App`
+   - **Node.js Version**: `18.x`
+4. **保存设置并重新部署**
+
+这将解决框架检测错误问题。
+
 ## 项目概述
 
 这是一个基于 Chainlink 价格数据源的去中心化应用程序，包含：
@@ -135,35 +149,43 @@ vercel env add REACT_APP_CHAIN_ID
 vercel --prod
 ```
 
-## Vercel 配置详解
+## 重要配置步骤
 
-项目已包含 `vercel.json` 配置文件：
+### Vercel Dashboard 配置
 
+**关键设置**（避免框架检测错误）：
+
+1. **Root Directory**: 必须设置为 `frontend`
+2. **Framework Preset**: 选择 `Create React App`
+3. **Node.js Version**: 18.x 或更高版本
+
+### 框架检测问题解决
+
+如果遇到 Remix 相关错误，请确保：
+
+1. **在 Vercel Dashboard 中**：
+   - 进入项目 Settings → General
+   - Root Directory 设置为 `frontend`
+   - Framework Preset 明确选择 `Create React App`
+
+2. **项目已包含 `frontend/vercel.json` 配置文件**：
 ```json
 {
-  "name": "chainlink-price-feed-dapp",
   "version": 2,
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/build",
-  "installCommand": "cd frontend && npm install",
-  "devCommand": "cd frontend && npm start",
+  "name": "chainlink-price-feed-dapp",
   "framework": "create-react-app",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install"
 }
 ```
 
 ### 配置说明：
 
-- **buildCommand**: 指定构建命令，进入 frontend 目录并执行 React 构建
-- **outputDirectory**: 指定构建输出目录
-- **installCommand**: 指定依赖安装命令
-- **framework**: 指定使用的框架
-- **routes**: 配置路由，确保 SPA 路由正常工作
+- **framework**: 明确指定为 create-react-app
+- **buildCommand**: React 应用构建命令
+- **outputDirectory**: 构建输出目录
+- **installCommand**: 依赖安装命令
 
 ## 部署后配置
 
