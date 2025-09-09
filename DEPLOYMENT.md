@@ -39,6 +39,15 @@
 **原因**：`postinstall` 脚本创建了循环依赖
 **解决方案**：项目已移除 `postinstall` 脚本，使用 `vercel.json` 中的 `buildCommand` 直接处理依赖安装。
 
+### 错误 4: "frontend: No such file or directory"
+如果构建失败提示找不到 frontend 目录：
+
+**原因**：路径解析问题或Git仓库同步问题
+**解决方案**：
+1. 确保 Git 仓库包含 `frontend` 目录
+2. 项目使用 `cd ./frontend` 进行明确路径导航
+3. 如果问题持续，在 Vercel 中触发新的部署
+
 ## 项目概述
 
 这是一个基于 Chainlink 价格数据源的去中心化应用程序，包含：

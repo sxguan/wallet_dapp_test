@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "chainlink-price-feed-dapp",
-  "buildCommand": "cd frontend && npm ci && npm run build",
+  "buildCommand": "cd ./frontend && npm ci && npm run build",
   "outputDirectory": "frontend/build",
   "installCommand": "echo 'Root install skipped - using frontend directory'",
   "framework": null
