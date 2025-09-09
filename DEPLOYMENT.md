@@ -79,12 +79,12 @@ REACT_APP_CHAIN_ID=11155111
    
    **Framework Preset**: `Create React App`
    
-   **Root Directory**: `./` (根目录)
+   **Root Directory**: `frontend` (重要：选择 frontend 目录作为根目录)
    
-   **Build and Output Settings**:
-   - Build Command: `cd frontend && npm run build`
-   - Output Directory: `frontend/build`
-   - Install Command: `cd frontend && npm install`
+   **Build and Output Settings**: 保持默认设置
+   - Build Command: `npm run build`
+   - Output Directory: `build`
+   - Install Command: `npm install`
 
 4. **环境变量配置**
 
@@ -105,14 +105,17 @@ REACT_APP_CHAIN_ID=11155111
 # 安装 Vercel CLI
 npm i -g vercel
 
-# 在项目根目录登录
+# 进入前端目录（重要！）
+cd frontend
+
+# 登录 Vercel
 vercel login
 
 # 部署项目
 vercel
 
 # 按照提示回答问题：
-# ? Set up and deploy "~/chainlink-dapp-example"? [Y/n] y
+# ? Set up and deploy "~/chainlink-dapp-example/frontend"? [Y/n] y
 # ? Which scope do you want to deploy to? [选择您的账户]
 # ? Link to existing project? [N/y] n
 # ? What's your project's name? chainlink-price-feed-dapp
